@@ -1,0 +1,37 @@
+<sdf version="1.7">
+  <world name="default">
+
+    <!-- Ground -->
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/Ground Plane</uri>
+    </include>
+
+    <!-- Light -->
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/Sun</uri>
+    </include>
+
+    <!-- Lidar sensor -->
+    <sensor name="lidar" type="gpu_lidar">
+      <pose>0 0 0.2 0 0 0</pose>
+      <update_rate>10</update_rate>
+
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <min_angle>-1.5708</min_angle>
+            <max_angle>1.5708</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>3.5</max>
+        </range>
+      </lidar>
+
+      <topic>/lidar</topic>
+    </sensor>
+
+  </world>
+</sdf>

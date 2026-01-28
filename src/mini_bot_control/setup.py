@@ -1,8 +1,8 @@
-from setuptools import find_packages, setup
-import os
-from glob import glob
+#!/usr/bin/env python3
 
-package_name = 'mini_bot_description'
+from setuptools import find_packages, setup
+
+package_name = 'mini_bot_control'
 
 setup(
     name=package_name,
@@ -12,20 +12,12 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-
-        (os.path.join('share', package_name, 'launch'),
-            glob('launch/*.py')),
-        (os.path.join('share', package_name, 'urdf'),
-            glob('urdf/*')),
-        (os.path.join('share', package_name, 'rviz'),
-            glob('rviz/*')),
-
     ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='zozo',
-    maintainer_email='snknitheesh@gmail.com',
-    description='Mini bot description package',
+    maintainer_email='sowmiah.jerom@gmail.com',
+    description='TODO: Package description',
     license='Apache-2.0',
     extras_require={
         'test': [
@@ -34,7 +26,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            
+            'teleop_wheels = mini_bot_control.teleop_wheels:main'
         ],
     },
 )

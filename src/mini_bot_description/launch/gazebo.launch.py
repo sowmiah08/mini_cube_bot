@@ -31,7 +31,14 @@ def generate_launch_description():
                 'launch',
                 'gz_sim.launch.py'
             ])
-        )
+        ),
+        launch_arguments={
+            'gz_args': PathJoinSubstitution([
+                pkg_mini_bot,
+                'worlds',
+                'mini_bot_world.sdf'
+            ])
+        }.items()
     )
 
     # Spawn robot
