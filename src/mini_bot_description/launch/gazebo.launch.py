@@ -14,7 +14,6 @@ def generate_launch_description():
         [pkg_mini_bot, 'urdf', 'mini_bot.urdf.xacro']
     )
 
-    # Robot State Publisher
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -23,7 +22,6 @@ def generate_launch_description():
         }]
     )
 
-    # Gazebo
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([
@@ -41,7 +39,6 @@ def generate_launch_description():
         }.items()
     )
 
-    # Spawn robot
     spawn_entity = Node(
         package='ros_gz_sim',
         executable='create',

@@ -9,34 +9,19 @@ def generate_launch_description():
 
     pkg_mini_bot = FindPackageShare('mini_bot_description')
 
-    default_model_path = PathJoinSubstitution(
+    model_path = PathJoinSubstitution(
         [pkg_mini_bot, 'urdf', 'mini_bot01.urdf']
     )
 
-    default_rviz_config_path = PathJoinSubstitution(
+    rviz_config_path = PathJoinSubstitution(
         [pkg_mini_bot, 'rviz', 'urdf.rviz']
-    )
-
-    gui_arg = DeclareLaunchArgument(
-        'gui', default_value='true',
-        description='Enable joint_state_publisher_gui'
-    )
-
-    model_arg = DeclareLaunchArgument(
-        'model', default_value=default_model_path,
-        description='Absolute path to robot URDF file'
-    )
-
-    rviz_arg = DeclareLaunchArgument(
-        'rvizconfig', default_value=default_rviz_config_path,
-        description='RViz config file'
     )
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         parameters=[{
-            'robot_description': Command(['cat ', LaunchConfiguration('model')])
+            'robot_description': Command(['cat ', model_path])
         }]
     )
 
@@ -49,14 +34,11 @@ def generate_launch_description():
     rviz = Node(
         package='rviz2',
         executable='rviz2',
-        arguments=['-d', LaunchConfiguration('rvizconfig')],
+        arguments=['-d', rviz_config_path],
         output='screen'
     )
 
     return LaunchDescription([
-        gui_arg,
-        model_arg,
-        rviz_arg,
         robot_state_publisher,
         joint_state_publisher,
         rviz
