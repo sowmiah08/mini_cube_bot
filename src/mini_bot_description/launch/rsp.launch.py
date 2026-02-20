@@ -1,4 +1,5 @@
 import os
+
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
@@ -8,11 +9,15 @@ from launch_ros.actions import Node
 
 import xacro
 
+
 def generate_launch_description():
+
+    # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
-     # Process the URDF file
+
+    # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('mini_bot_description'))
-    xacro_file = os.path.join(pkg_path,'urdf','test_bot.urdf.xacro')
+    xacro_file = os.path.join(pkg_path,'urdf','robot.urdf.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     
     # Create a robot_state_publisher node
@@ -24,10 +29,13 @@ def generate_launch_description():
         parameters=[params]
     )
 
+
+    # Launch!
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
+
         node_robot_state_publisher
     ])
