@@ -1,1 +1,20 @@
 ros2 launch mini_bot_description display.launch.py
+
+
+to visualize the robot in rviz
+
+terminal 1
+
+go to the ws
+colcon build --symlink-install
+source install/setup.bash
+ros2 launch mini_bot_description sim.launch.py
+
+in another terminal 
+source install/setup.bash
+rviz2
+
+in rviz2
+set 'Fixed Frame' to 'base_link'
+add 'Robot Model'
+set description topic to '/robot_description'
