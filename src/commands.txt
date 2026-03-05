@@ -18,3 +18,10 @@ in rviz2
 set 'Fixed Frame' to 'base_link'
 add 'Robot Model'
 set description topic to '/robot_description'
+
+*ROS 2 only sees files inside install/
+
+package used in launch file to spawn robot in gazebo is 'ros_gz_sim' for gazebo harmonic executable is 'create'
+
+ros2 run teleop_twist_keyboard teleop_twist_keyboard 
+ros2 run teleop_twist_joy teleop_node 

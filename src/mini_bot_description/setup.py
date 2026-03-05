@@ -2,6 +2,7 @@ from setuptools import find_packages, setup
 import os
 from glob import glob
 
+
 package_name = 'mini_bot_description'
 
 setup(
@@ -17,8 +18,8 @@ setup(
             glob('launch/*.py')),
         (os.path.join('share', package_name, 'urdf'),
             glob('urdf/*')),
-        (os.path.join('share', package_name, 'rviz'),
-            glob('rviz/*')),
+        (os.path.join('share', package_name, 'worlds'),
+            glob('worlds/*')),
 
     ],
     install_requires=['setuptools'],
