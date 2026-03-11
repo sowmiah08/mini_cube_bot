@@ -16,7 +16,7 @@ def generate_launch_description():
     world_file = os.path.join(
         pkg_share,
         'worlds',
-        'mini_bot_world.sdf'
+        'obstacles.sdf'
     )
 #start robot state publisher
     rsp = IncludeLaunchDescription(
@@ -48,7 +48,9 @@ def generate_launch_description():
         package = 'ros_gz_bridge',
         executable = 'parameter_bridge',
         arguments = [
-            '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'
+            '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
+
         ],
         output = 'screen'
     )

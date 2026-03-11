@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="obstacle_world">
+
+    <!-- Ground -->
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/Ground Plane</uri>
+    </include>
+
+    <!-- Sun -->
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/Sun</uri>
+    </include>
+
+
+    <!-- Cone Obstacle -->
+    <model name="cone_obstacle">
+      <static>true</static>
+      <pose>2 0 0.3 0 0 0</pose>
+
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cone>
+              <radius>0.2</radius>
+              <length>0.6</length>
+            </cone>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.1 1</ambient>
+          </material>
+        </visual>
+
+        <collision name="collision">
+          <geometry>
+            <cone>
+              <radius>0.2</radius>
+              <length>0.6</length>
+            </cone>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+
+    <!-- Box Obstacle -->
+    <model name="box_obstacle">
+      <static>true</static>
+      <pose>3 1 0.25 0 0 0</pose>
+
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 1 1</ambient>
+          </material>
+        </visual>
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+
+    <!-- Cylinder Obstacle -->
+    <model name="cylinder_obstacle">
+      <static>true</static>
+      <pose>1 -2 0.4 0 0 0</pose>
+
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.8</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+          </material>
+        </visual>
+
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.8</length>
+            </cylinder>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+
+    <!-- Wall -->
+    <model name="wall">
+      <static>true</static>
+      <pose>4 0 0.5 0 0 0</pose>
+
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3 0.1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3 0.1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+  </world>
+</sdf>
